@@ -1,4 +1,4 @@
-import { Component, createEffect, createSignal } from 'solid-js';
+import { Component, createSignal } from 'solid-js';
 
 const getCurrentTime = () => {
   const d = new Date();
@@ -9,13 +9,12 @@ const getCurrentTime = () => {
   return `${hours}:${minutes}:${seconds}`;
 }
 
-const [time, setTime] = createSignal(getCurrentTime());
-
-setInterval(() => {
-  setTime(getCurrentTime());
-}, 1000);
-
 export const Clock: Component = () => {
+  const [time, setTime] = createSignal(getCurrentTime());
+  
+  setInterval(() => {
+    setTime(getCurrentTime());
+  }, 1000);
   
   return (
     <div>
