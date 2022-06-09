@@ -7,15 +7,15 @@ const getCurrentTime = () => {
   const seconds = `0${d.getSeconds()}`.slice(-2);
 
   return `${hours}:${minutes}:${seconds}`;
-}
+};
 
 export const Clock: Component = () => {
   const [time, setTime] = createSignal(getCurrentTime());
-  
+
   setInterval(() => {
     setTime(getCurrentTime());
   }, 1000);
-  
+
   return (
     <div>
       <h1>{time()}</h1>
